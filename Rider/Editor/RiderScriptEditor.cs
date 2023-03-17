@@ -418,13 +418,13 @@ namespace Packages.Rider.Editor
         return false;
       }
       
-      if (!IsUnityScript(path))
-      {
-        m_ProjectGeneration.SyncIfNeeded(affectedFiles: new string[] { }, new string[] { });
-        var fastOpenResult = EditorPluginInterop.OpenFileDllImplementation(path, line, column);
-        if (fastOpenResult)
-          return true;
-      }
+      // if (!IsUnityScript(path))
+      // {
+      //   m_ProjectGeneration.SyncIfNeeded(affectedFiles: new string[] { }, new string[] { });
+      //   var fastOpenResult = EditorPluginInterop.OpenFileDllImplementation(path, line, column);
+      //   if (fastOpenResult)
+      //     return true;
+      // }
       
       var slnFile = GetSolutionFile(path);
       return Discovery.RiderFileOpener.OpenFile(CurrentEditor, slnFile, path, line, column);

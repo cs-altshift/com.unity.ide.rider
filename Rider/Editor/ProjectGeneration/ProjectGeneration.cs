@@ -643,7 +643,11 @@ namespace Packages.Rider.Editor.ProjectGeneration
 
     public string SolutionFile()
     {
-      return Path.Combine(ProjectDirectory, $"{m_ProjectName}.sln");
+      string solutionName = RiderProjectSettings.GetSolutionName();
+      if (string.IsNullOrWhiteSpace(solutionName)) {
+        solutionName = m_ProjectName;
+      }
+      return Path.Combine(ProjectDirectory, $"{solutionName}.sln");
     }
 
     private void ProjectHeader(StringBuilder stringBuilder, ProjectPart assembly, List<ResponseFileData> responseFilesData)
